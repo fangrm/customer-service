@@ -1,0 +1,743 @@
+/**
+ * Customer Service 客服
+ */
+
+$CSContentBackgroundColor: #f1f1f1;
+$CSTitleBackgroundColor: #f1f1f1;
+
+@mixin fullWidthHeight {
+  width: 100%;
+  height: 100%;
+}
+
+.customer-service {
+  position: absolute;
+  right: 36px;
+  bottom: 45px;
+  z-index: 120;
+  .cs-layout {
+    width: 440px;
+    height: 562px;
+    background-color: $CSContentBackgroundColor;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+
+    .cs-title {
+      height: 56px;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: $CSTitleBackgroundColor;
+      .main-title {
+        width: 378px;
+      }
+      .btn-group {
+        padding: 19px 0;
+        .btn {
+          margin-left: 5px;
+          width: 18px;
+          height: 18px;
+
+          &.zoom-btn {
+            background: url("img/customer-service.svg") no-repeat -40px 0;
+            &:hover {
+              background-position: -40px -40px;
+            }
+            &:active {
+              background-position: -40px -80px;
+            }
+          }
+          &.close-btn {
+            background: url("img/customer-service.svg") no-repeat 0 0;
+            &:hover {
+              background-position: 0 -40px;
+            }
+            &:active {
+              background-position: 0 -80px;
+            }
+          }
+        }
+      }
+    }
+    .cs-content {
+      height: 506px;
+
+      .cs-im {
+        @include fullWidthHeight;
+      }
+    }
+
+    .cs-comment {
+      position: absolute;
+      top: 0;
+      @include fullWidthHeight;
+    }
+  }
+}
+
+.customer-service-sticker {
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  z-index: 200;
+  .sticker-btn {
+    width: 30px;
+    height: 53px;
+    position: relative;
+
+    .status {
+      @include fullWidthHeight;
+      &.normal-status {
+        background: url("img/customer-service.svg") no-repeat -360px 0;
+      }
+      &.message-status {
+        top: 0;
+        position: absolute;
+        background: url("img/customer-service.svg") no-repeat -400px 0;
+        @include flashElement;
+      }
+    }
+  }
+}
+
+.customer-service-header {
+  .default-header,
+  .name {
+    color: #151515;
+    @extend %font-omitted;
+  }
+  .staff-info {
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    .default-logo {
+      background: url("img/customer-service.svg") no-repeat -280px 0;
+    }
+    .name {
+      margin-left: 16px;
+      font-size: 14px;
+    }
+  }
+}
+
+.customer-service-connecting {
+  @include fullWidthHeight;
+  background-color: $CSContentBackgroundColor;
+  position: relative;
+  .back-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 180px;
+    width: 180px;
+    background: url("img/customer-service.svg") no-repeat 0 -120px;
+  }
+  .loading {
+    color: #858585;
+    text-align: center;
+    margin-top: -20px;
+    .spinner {
+      width: 150px;
+      text-align: center;
+    }
+    .spinner > div {
+      width: 8px;
+      height: 8px;
+      margin: 0 2px;
+      background-color: #858585;
+
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+      animation: bouncedelay 1.4s infinite ease-in-out;
+      /* Prevent first frame from flickering when animation starts */
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .spinner .bounce1 {
+      -webkit-animation-delay: -1.20s;
+      animation-delay: -1.20s;
+    }
+
+    .spinner .bounce2 {
+      -webkit-animation-delay: -1.04s;
+      animation-delay: -1.04s;
+    }
+
+    .spinner .bounce3 {
+      -webkit-animation-delay: -0.48s;
+      animation-delay: -0.48s;
+    }
+
+    .spinner .bounce4 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .spinner .bounce5 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+      0%, 80%, 100% { -webkit-transform: scale(0.0) }
+      40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes bouncedelay {
+      0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+      } 40% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
+    }
+  }
+}
+
+.customer-service-no-connect,
+.customer-service-no-support {
+  @include fullWidthHeight;
+  background-color: $CSContentBackgroundColor;
+  position: relative;
+  .back-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 180px;
+    width: 180px;
+    background: url("img/customer-service.svg") no-repeat 0 -120px;
+  }
+  .info {
+    .notice {
+      display: block;
+      color: #858585;
+    }
+    .reconnect-btn {
+      display: block;
+      margin: 10px auto 0 auto;
+      width: 56px;
+      height: 20px;
+      color: #f1f1f1;
+      border-radius: 5px;
+      background-color: #868686;
+      &:hover {
+        background-color: #b5b5b5;
+      }
+      &:active {
+        background-color: #303030;
+      }
+    }
+  }
+}
+
+.customer-service-comment {
+  @include fullWidthHeight;
+  background-color: rgba(0,0,0,0.8);
+  .comment-box {
+    width: 320px;
+    height: 242px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: $CSContentBackgroundColor;
+
+    .desc,
+    .stars,
+    .content {
+      margin-top: 10px;
+    }
+
+    .title {
+      color: #7c7c7c;
+      font-size: 14px;
+    }
+    .desc {
+      color: #7c7c7c;
+    }
+    .stars {
+      .star-btn {
+        width: 16px;
+        height: 15px;
+        margin-right: 10px;
+        background: url("img/customer-service.svg") no-repeat -240px 0;
+      }
+      .sparkle-star-btn {
+        background: url("img/customer-service.svg") no-repeat -240px -40px;
+      }
+    }
+    .content {
+      .content-area {
+        width: 280px;
+        height: 75px;
+        resize: none;
+        border: none;
+        outline: 0;
+        padding: 5px;
+        color: #b5b5b5;
+      }
+    }
+    .btn-group {
+      margin-top: 8px;
+      text-align: right;
+      .btn {
+        width: 60px;
+        height: 26px;
+        border-radius: 4px;
+        &.cancel-btn {
+          color: #b5b5b5;
+          border: 1px solid #b5b5b5;
+          &:hover {
+            color: #f1f1f1;
+            background-color: #b5b5b5;
+            border: none;
+          }
+          &:active {
+            color: #f1f1f1;
+            background-color: #858585;
+            border: none;
+          }
+        }
+        &.confirm-btn {
+          margin-left: 10px;
+          color: #f1f1f1;
+          background-color: #b5b5b5;
+          &:hover {
+            background-color: #858585;
+          }
+          &:active {
+            background-color: #353535;
+          }
+        }
+      }
+    }
+  }
+}
+
+.customer-service-im {
+  @include fullWidthHeight;
+  background-color: $CSContentBackgroundColor;
+  position: relative;
+
+  .dialog-area {
+    width: 100%;
+    height: 406px;
+    position: relative;
+    .im-dialog {
+      @include fullWidthHeight;
+      overflow-y: auto;
+      padding-bottom: 10px;
+      .im-record-loading {
+        text-align: center;
+        padding: 15px 0 5px 0;
+      }
+
+      .im-message {
+        .timestamp {
+          text-align: center;
+          font-size: 12px;
+          color: #b5b5b5;
+          padding: 10px 0;
+        }
+        .msg {
+          color: #141414;
+          padding: 10px;
+          border-radius: 8px;
+          display: inline-block;
+          word-wrap: break-word;
+          white-space: pre-wrap;
+
+          //消息可选
+          -webkit-user-select: text;  /* Chrome all / Safari all */
+          -moz-user-select: text;     /* Firefox all */
+          -ms-user-select: text;      /* IE 10+ */
+          user-select: text;          /* Likely future */
+        }
+        .msg-sys {
+          text-align: center;
+          max-width: 320px;
+          color: #7c7c7c;
+          background-color: #fcfcfc;
+          .sys-title {
+            padding-bottom: 5px;
+          }
+        }
+        .msg-text,
+        .msg-link {
+          max-width: 340px;
+          min-height: 39px;
+          font-size: 13px;
+          text-align: left;
+          line-height: 1.8;
+        }
+        .msg-link {
+          .link-project {
+            padding: 5px 10px;
+            background: url("img/customer-service.svg") no-repeat -164px -1px;
+          }
+        }
+        .msg-img {
+          img {
+            max-width: 300px;
+            max-height: 300px;
+            vertical-align: middle;
+          }
+        }
+        .msg-emoji {
+          img {
+            width: 30px;
+            vertical-align: middle;
+          }
+        }
+
+        .sys-msg {
+          padding-top: 10px;
+          text-align: center;
+        }
+        .staff-msg {
+          padding:10px 10px 0 10px;
+          text-align: left;
+          .msg {
+            border-radius: 0 8px 8px 8px;
+            background-color: #ffffff;
+            box-shadow: 0 1.5px 0.5px #e5e5e5;
+          }
+        }
+        .user-msg {
+          padding:10px 10px 0 10px;
+          text-align: right;
+          .msg {
+            border-radius: 8px 0 8px 8px;
+            background-color: #dcdcdc;
+            box-shadow: 0 1.5px 0.5px #cdcdcd;
+          }
+        }
+      }
+    }
+    .im-new-msg-notice {
+      position: absolute;
+      right: 20px;
+      bottom: 4px;
+      width: 32px;
+      height: 14px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 14px;
+      color: $CSTitleBackgroundColor;
+      background-color: #48b243;
+      border-radius: 4px 4px 0 4px;
+    }
+  }
+  .input-area {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
+    .im-tool {
+      padding: 2px 0;
+      position: relative;
+        .btn {
+          width: 28px;
+          height: 28px;
+          color: #858585;
+
+          &:disabled {
+            cursor: not-allowed;
+          }
+
+          &.emoji-btn {
+            background: url("img/customer-service.svg") no-repeat -80px 0;
+            &:hover {
+              background: url("img/customer-service.svg") no-repeat -80px -40px;
+            }
+            &:active {
+              background: url("img/customer-service.svg") no-repeat -80px -80px;
+            }
+          }
+          &.image-btn {
+            background: url("img/customer-service.svg") no-repeat -120px 0;
+            &:hover {
+              background: url("img/customer-service.svg") no-repeat -120px -40px;
+            }
+            &:active {
+              background: url("img/customer-service.svg") no-repeat -120px -80px;
+            }
+          }
+          &.send-project-btn {
+            width: 78px;
+            padding-left: 20px;
+            background: url("img/customer-service.svg") no-repeat -160px 0;
+            &:hover {
+              background: url("img/customer-service.svg") no-repeat -160px -40px;
+            }
+            &:active {
+              background: url("img/customer-service.svg") no-repeat -160px -80px;
+            }
+          }
+        }
+
+        .im-emoji-panel {
+          position: absolute;
+          top: -247px;
+          .triangle {
+            @include triangle(20px, white, down);
+            position: absolute;
+            left: 4px;
+            bottom: 4px;
+          }
+          .emoji-group {
+            width: 314px;
+            height: 240px;
+            background-color: white;
+            overflow-y: hidden;
+            border-radius: 8px;
+            margin-bottom: 23px;
+            padding: 0 10px;
+            img {
+              width: 26px;
+              height: 26px;
+              margin: 8px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    .im-input {
+      outline: 0;
+      resize: none;
+      border: none;
+      width: 100%;
+      height: 58px;
+      padding: 5px;
+      color: #232323;
+      ::-webkit-input-placeholder { /* WebKit browsers */
+        color: #a7a7a7;
+      }
+      :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #a7a7a7;
+        opacity:  1;
+      }
+      ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #a7a7a7;
+        opacity:  1;
+      }
+      :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #a7a7a7;
+      }
+      border-radius: 4px;
+    }
+  }
+  .im-upload {
+    width: 1px;
+    height: 1px;
+    bottom: 80px;
+    left: 33px;
+    z-index: -1000;
+    position: absolute;
+  }
+}
+
+.customer-service-photo-browser {
+  z-index: 120;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 580px;
+  height: 500px;
+  background-color: $CSContentBackgroundColor;
+  border-radius: 4px;
+  color: #b5b5b5;
+  .pb-bar {
+    height: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    .pb-title {
+      .title-logo {
+        width: 30px;
+        height: 40px;
+        background: url("img/customer-service.svg") no-repeat -440px 0;
+      }
+    }
+    .pb-tool {
+      margin-left: 15px;
+      .tool-btn {
+        width: 30px;
+        height: 16px;
+        border: 1px ;
+        background: url("img/customer-service.svg") no-repeat;
+
+        &:disabled {
+          cursor: not-allowed;
+        }
+
+        &.tool-btn-left {
+          background-position: -520px 0;
+          &:hover {
+            background-position: -520px -40px;
+          }
+          &:active {
+            background-position: -520px -80px;
+          }
+        }
+        &.tool-btn-right {
+          background-position: -560px 0;
+          &:hover {
+            background-position: -560px -40px;
+          }
+          &:active {
+            background-position: -560px -80px;
+          }
+        }
+        &.tool-btn-zoom-out {
+          background-position: -600px 0;
+          &:hover {
+            background-position: -600px -40px;
+          }
+          &:active {
+            background-position: -600px -80px;
+          }
+        }
+        &.tool-btn-zoom-in {
+          background-position: -640px 0;
+          &:hover {
+            background-position: -640px -40px;
+          }
+          &:active {
+            background-position: -640px -80px;
+          }
+        }
+      }
+      .btn-seperator {
+        height: 16px;
+        width: 1px;
+        background-color: #d3d3d3;
+      }
+      .zoom-percent {
+        width: 40px;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      .tool-select,
+      .tool-zoom {
+        border: 1px solid #d3d3d3;
+        border-radius: 4px;
+      }
+      .tool-zoom {
+        margin-left: 15px;
+      }
+    }
+  }
+  .pb-content {
+    width: 100%;
+    height: 460px;
+    padding: 4px 4px 4px 4px;
+    .content-container {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      position: relative;
+      text-align: center;
+      img {
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+  .pb-close {
+    position: absolute;
+    right: 4px;
+    width: 30px;
+    height: 40px;
+    background: url("img/customer-service.svg") no-repeat -480px 0;
+    &:hover {
+      background-position: -480px -40px;
+    }
+    &:active {
+      background-position: -480px -80px;
+    }
+  }
+}
+
+.customer-service-edit-cover {
+  z-index: 120;
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  .edit-cover-notice {
+    color: white;
+    font-size: 16px;
+    position: relative;
+    padding: 50px 30px;
+    border: 2px solid white;
+    border-radius: 5px;
+    .edit-cover-close-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: url("img/customer-service.svg") no-repeat -680px 0;
+      &:hover {
+        background-position: -680px -40px;
+      }
+      &:active {
+        background-position: -680px -80px;
+      }
+    }
+  }
+  .edit-covet-modal {
+    width: 280px;
+    height: 120px;
+    background-color: $CSContentBackgroundColor;
+    border-radius: 8px;
+    color: #7c7c7c;
+    font-size: 14px;
+    .modal-content {
+      padding: 30px 0 20px 0;
+      text-align: center;
+    }
+    .btn-group {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 12px;
+      .btn {
+        width: 60px;
+        height: 26px;
+        border-radius: 4px;
+        &.cancel-btn {
+          color: #b5b5b5;
+          border: 1px solid #b5b5b5;
+          &:hover {
+            color: #f1f1f1;
+            background-color: #b5b5b5;
+            border: none;
+          }
+          &:active {
+            color: #f1f1f1;
+            background-color: #858585;
+            border: none;
+          }
+        }
+        &.confirm-btn {
+          margin-left: 10px;
+          color: #f1f1f1;
+          background-color: #b5b5b5;
+          &:hover {
+            background-color: #858585;
+          }
+          &:active {
+            background-color: #353535;
+          }
+        }
+      }
+    }
+  }
+}
